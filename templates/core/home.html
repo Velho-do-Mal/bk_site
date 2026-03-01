@@ -1,0 +1,492 @@
+{% extends 'base.html' %}
+{% load static humanize %}
+
+{% block title %}BK Engenharia e Tecnologia — Projetos Elétricos, Subestações e Linhas de Transmissão{% endblock %}
+{% block meta_description %}BK Engenharia: especialistas em projetos elétricos de subestações até 230kV, linhas de transmissão, estudos elétricos e tecnologia BIM. Mais de 50 projetos entregues. Curitiba, PR.{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HERO — Full-screen com imagem de impacto
+══════════════════════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center overflow-hidden" id="hero">
+
+  <!-- Background com overlay gradiente -->
+  <div class="absolute inset-0">
+    <img src="/static/images/bk_imagem_1.jpg"
+         alt="BK Engenharia — Subestação Elétrica"
+         class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-950/80 to-gray-950/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent"></div>
+  </div>
+
+  <!-- Partículas decorativas -->
+  <div class="absolute top-20 right-20 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <div class="max-w-3xl">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-1.5 mb-8"
+           data-aos="fade-down">
+        <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+        <span class="text-blue-300 text-sm font-medium">Engenharia de Alta Performance</span>
+      </div>
+
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6"
+          data-aos="fade-up" data-aos-delay="100">
+        Energia que
+        <span class="gradient-text block">transforma</span>
+        o futuro
+      </h1>
+
+      <p class="text-gray-300 text-xl leading-relaxed mb-10 max-w-xl"
+         data-aos="fade-up" data-aos-delay="200">
+        Projetos elétricos de alta complexidade — subestações até 230kV, linhas de
+        transmissão, estudos elétricos e tecnologia BIM para resultados extraordinários.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4"
+           data-aos="fade-up" data-aos-delay="300">
+        <a href="{% url 'contato:contato' %}"
+           class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl text-lg transition-all duration-200 shadow-2xl shadow-blue-600/30 hover:shadow-blue-500/40 hover:-translate-y-1">
+          Solicitar Orçamento
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="{% url 'portfolio:lista' %}"
+           class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-2xl text-lg border border-white/20 transition-all duration-200 hover:-translate-y-1">
+          Ver Portfólio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 text-xs">
+    <span>scroll</span>
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     NÚMEROS / KPIs
+══════════════════════════════════════════════════════════════════ -->
+<section class="bg-gray-950 py-16" data-counter-section>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+        <div class="text-5xl font-black text-white mb-2">
+          <span data-counter data-target="28" data-suffix="+">28+</span>
+        </div>
+        <div class="text-blue-400 text-sm font-medium uppercase tracking-wider">Colaboradores</div>
+        <div class="text-gray-500 text-xs mt-1">+30 anos de experiência</div>
+      </div>
+
+      <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-5xl font-black text-white mb-2">
+          <span data-counter data-target="50" data-suffix="+">50+</span>
+        </div>
+        <div class="text-blue-400 text-sm font-medium uppercase tracking-wider">Projetos</div>
+        <div class="text-gray-500 text-xs mt-1">Entregues com excelência</div>
+      </div>
+
+      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-5xl font-black text-white mb-2">138<span class="text-blue-400 text-3xl">kV</span></div>
+        <div class="text-blue-400 text-sm font-medium uppercase tracking-wider">Subestações</div>
+        <div class="text-gray-500 text-xs mt-1">Até 230kV de tensão</div>
+      </div>
+
+      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-5xl font-black text-white mb-2">
+          <span data-counter data-target="100" data-suffix="%">100%</span>
+        </div>
+        <div class="text-blue-400 text-sm font-medium uppercase tracking-wider">Processos</div>
+        <div class="text-gray-500 text-xs mt-1">Mapeados e otimizados</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SOBRE / QUEM SOMOS
+══════════════════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div data-aos="fade-right">
+        <span class="text-blue-600 text-sm font-bold uppercase tracking-widest">Quem Somos</span>
+        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-6 leading-tight">
+          Inovação e gestão eficiente para
+          <span class="gradient-text">resultados extraordinários</span>
+        </h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+          A BK Engenharia e Tecnologia se destaca por adotar uma gestão moderna, ágil e
+          inovadora, aliada à excelência na elaboração de projetos e estudos especializados.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          Com processos internos 100% mapeados e otimizados, reduzimos custos operacionais
+          de forma estratégica, oferecendo preços justos e transparentes sem comprometer
+          qualidade ou inovação.
+        </p>
+
+        <!-- Diferenciais 2x2 -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          {% for item in diferenciais %}
+          <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex-shrink-0 flex items-center justify-center">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-900 text-sm">{{ item.0 }}</div>
+              <div class="text-gray-500 text-xs">{{ item.1 }}</div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">01</div>
+            <div><div class="font-semibold text-gray-900 text-sm">Sistemas Próprios</div><div class="text-gray-500 text-xs">ERP e plataformas de estudos elétricos</div></div>
+          </div>
+          <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">02</div>
+            <div><div class="font-semibold text-gray-900 text-sm">100% Mapeado</div><div class="text-gray-500 text-xs">Processos otimizados para eficiência</div></div>
+          </div>
+          <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">03</div>
+            <div><div class="font-semibold text-gray-900 text-sm">Tecnologia BIM</div><div class="text-gray-500 text-xs">Projetos integrados em plataforma BIM</div></div>
+          </div>
+          <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">04</div>
+            <div><div class="font-semibold text-gray-900 text-sm">Gestão PMBOK</div><div class="text-gray-500 text-xs">Metodologia estruturada de projetos</div></div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <a href="{% url 'core:sobre' %}"
+           class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Conheça nossa história
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Imagem com sobreposição de stats -->
+      <div class="relative" data-aos="fade-left">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img src="/static/images/tecnologia_construcao.jpg"
+               alt="Engenharia BK"
+               class="w-full h-[500px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+        </div>
+        <!-- Card flutuante -->
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900">50+ Projetos</div>
+              <div class="text-gray-500 text-sm">Entregues com sucesso</div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-6 -right-6 bg-blue-600 rounded-2xl shadow-2xl p-6 text-white">
+          <div class="text-3xl font-black">230kV</div>
+          <div class="text-blue-200 text-sm">Tensão máxima</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SERVIÇOS
+══════════════════════════════════════════════════════════════════ -->
+<section class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="text-blue-600 text-sm font-bold uppercase tracking-widest">Escopo Completo</span>
+      <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mt-3 mb-4">
+        Nossos <span class="gradient-text">Serviços</span>
+      </h2>
+      <p class="text-gray-600 text-xl max-w-2xl mx-auto">
+        Da concepção à entrega, cobrimos todo o ciclo do projeto elétrico com
+        excelência técnica e tecnologia de ponta.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Card Projetos Elétricos -->
+      <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 card-hover" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Projetos Elétricos</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          Prediais, industriais, subestações até 230kV, redes MT/BT, iluminação pública, SPDA e aterramento.
+        </p>
+        <ul class="space-y-2 text-sm text-gray-500 mb-6">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>Subestações 13,8kV a 230kV</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>Linhas de Transmissão</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>Redes de Distribuição MT/BT</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>SPDA e Aterramento</li>
+        </ul>
+        <a href="{% url 'servicos:lista' %}" class="text-blue-600 font-semibold text-sm flex items-center gap-1 hover:gap-3 transition-all">
+          Ver detalhes <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Card Estudos Elétricos -->
+      <div class="bg-blue-600 rounded-3xl p-8 shadow-2xl shadow-blue-600/30 card-hover" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Estudos Elétricos</h3>
+        <p class="text-blue-100 text-sm leading-relaxed mb-5">
+          Análises técnicas especializadas com software ETAP, PLS-CADD e ferramentas BK proprietárias.
+        </p>
+        <ul class="space-y-2 text-sm text-blue-100 mb-6">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-200 rounded-full"></span>Fluxo de Potência</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-200 rounded-full"></span>Curto-Circuito</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-200 rounded-full"></span>Coordenação de Isolamento</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-200 rounded-full"></span>Corona e Campos Eletromagnéticos</li>
+        </ul>
+        <a href="{% url 'servicos:lista' %}" class="text-white font-semibold text-sm flex items-center gap-1 hover:gap-3 transition-all">
+          Ver detalhes <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Card Execução & Gestão -->
+      <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 card-hover" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Execução & Gestão</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          Gerenciamento PMBOK completo, fiscalização, topografia e comissionamento com acompanhamento em tempo real.
+        </p>
+        <ul class="space-y-2 text-sm text-gray-500 mb-6">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>Gerenciamento PMBOK</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>Fiscalização de Obras</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>Comissionamento</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>Consultoria Especializada</li>
+        </ul>
+        <a href="{% url 'servicos:lista' %}" class="text-blue-600 font-semibold text-sm flex items-center gap-1 hover:gap-3 transition-all">
+          Ver detalhes <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="{% url 'servicos:lista' %}"
+         class="inline-flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200">
+        Ver todos os serviços
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PORTFÓLIO DESTAQUE
+══════════════════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex items-end justify-between mb-12" data-aos="fade-up">
+      <div>
+        <span class="text-blue-600 text-sm font-bold uppercase tracking-widest">Nossos Projetos</span>
+        <h2 class="text-4xl font-black text-gray-900 mt-2">
+          Portfólio <span class="gradient-text">de Excelência</span>
+        </h2>
+      </div>
+      <a href="{% url 'portfolio:lista' %}"
+         class="hidden sm:flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700">
+        Ver todos
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+
+    {% if projetos_destaque %}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for projeto in projetos_destaque %}
+      <a href="{% url 'portfolio:detalhe' projeto.slug %}"
+         class="group relative rounded-2xl overflow-hidden card-hover bg-gray-100" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:0 }}0">
+        {% if projeto.imagem_capa %}
+        <img src="{{ projeto.imagem_capa.url }}" alt="{{ projeto.titulo }}"
+             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        {% else %}
+        <div class="w-full h-64 bg-gradient-to-br from-blue-900 to-blue-600 flex items-center justify-center">
+          <svg class="w-16 h-16 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        {% endif %}
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent
+                    opacity-60 group-hover:opacity-80 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          {% if projeto.categoria %}
+          <span class="text-blue-300 text-xs font-semibold uppercase tracking-wider">{{ projeto.categoria.nome }}</span>
+          {% endif %}
+          <h3 class="text-white font-bold text-lg mt-1">{{ projeto.titulo }}</h3>
+          {% if projeto.tensao %}
+          <span class="inline-block mt-2 bg-blue-600/80 text-white text-xs px-2 py-0.5 rounded-full">{{ projeto.tensao }}</span>
+          {% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Preview com imagens estáticas quando não há projetos cadastrados -->
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up">
+        <img src="/static/images/bk_imagem_1.jpg" alt="Subestação BK" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold">Subestações</span>
+          <h3 class="text-white font-bold text-lg">Projetos de Subestações até 230kV</h3>
+        </div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+        <img src="/static/images/bk_imagem_2.jpg" alt="Linha de Transmissão" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold">Transmissão</span>
+          <h3 class="text-white font-bold text-lg">Linhas de Transmissão até 230kV</h3>
+        </div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+        <img src="/static/images/bk_imagem_6.jpg" alt="Tecnologia BK" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold">Tecnologia</span>
+          <h3 class="text-white font-bold text-lg">Sistemas BK & Automação</h3>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TECNOLOGIA / FERRAMENTAS
+══════════════════════════════════════════════════════════════════ -->
+<section class="py-20 bg-gray-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="text-blue-400 text-sm font-bold uppercase tracking-widest">Stack Técnico</span>
+      <h2 class="text-3xl font-black text-white mt-2">
+        Ferramentas de <span class="gradient-text">última geração</span>
+      </h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
+      {% for tool in tools_list %}
+      <div class="bg-gray-800 border border-gray-700 hover:border-blue-500 text-gray-300 hover:text-white
+                  px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:-translate-y-1">
+        {{ tool }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     BLOG — Artigos Recentes (SEO)
+══════════════════════════════════════════════════════════════════ -->
+{% if artigos_recentes %}
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-end justify-between mb-12" data-aos="fade-up">
+      <div>
+        <span class="text-blue-600 text-sm font-bold uppercase tracking-widest">Conhecimento</span>
+        <h2 class="text-4xl font-black text-gray-900 mt-2">
+          Blog <span class="gradient-text">Técnico</span>
+        </h2>
+      </div>
+      <a href="{% url 'blog:lista' %}" class="hidden sm:flex items-center gap-2 text-blue-600 font-semibold">
+        Ver todos <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {% for artigo in artigos_recentes %}
+      <a href="{% url 'blog:detalhe' artigo.slug %}" class="group card-hover" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+        <div class="rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
+          {% if artigo.imagem_capa %}
+          <img src="{{ artigo.imagem_capa.url }}" alt="{{ artigo.titulo }}"
+               class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          {% endif %}
+          <div class="p-6">
+            {% if artigo.categoria %}
+            <span class="text-blue-600 text-xs font-bold uppercase tracking-wider">{{ artigo.categoria.nome }}</span>
+            {% endif %}
+            <h3 class="font-bold text-gray-900 mt-2 mb-2 group-hover:text-blue-600 transition-colors">{{ artigo.titulo }}</h3>
+            <p class="text-gray-500 text-sm line-clamp-2">{{ artigo.resumo }}</p>
+            <div class="text-gray-400 text-xs mt-4">{{ artigo.publicado_em|date:"d/m/Y" }}</div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════════════════════════ -->
+<section class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="/static/images/bk_imagem_3.jpg" alt="" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/90"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
+    <h2 class="text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+      "Desafiamos o impossível, inovamos a cada passo e entregamos soluções que transformam
+      <span class="text-blue-200">desafios em resultados extraordinários."</span>
+    </h2>
+    <p class="text-blue-200 text-xl mb-10">Pronto para o próximo projeto?</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'contato:contato' %}"
+         class="bg-white text-blue-700 hover:bg-blue-50 font-bold px-10 py-4 rounded-2xl text-lg transition-all duration-200 shadow-2xl hover:-translate-y-1">
+        Solicitar Orçamento Gratuito
+      </a>
+      <a href="https://wa.me/5541995275570"
+         class="bg-green-500 hover:bg-green-400 text-white font-bold px-10 py-4 rounded-2xl text-lg transition-all duration-200 flex items-center justify-center gap-2 hover:-translate-y-1">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

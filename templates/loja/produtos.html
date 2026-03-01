@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Loja de Produtos Elétricos — BK Engenharia{% endblock %}
+{% block content %}
+<div class="bg-gray-950 pt-32 pb-16 text-center">
+  <h1 class="text-5xl font-black text-white">Loja de <span class="gradient-text">Produtos</span></h1>
+  <p class="text-gray-400 text-xl mt-4">Materiais elétricos importados com qualidade garantida</p>
+  <a href="{% url 'loja:softwares' %}" class="inline-block mt-4 text-blue-400 underline text-sm">Ver também: Softwares BK →</a>
+</div>
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    {% if categorias %}
+    <div class="flex flex-wrap gap-2 mb-8 justify-center">
+      <a href="{% url 'loja:produtos' %}" class="px-4 py-2 rounded-xl text-sm font-semibold {% if not categoria_ativa %}bg-blue-600 text-white{% else %}bg-white text-gray-600 border border-gray-200{% endif %}">Todos</a>
+      {% for cat in categorias %}<a href="?categoria={{ cat.slug }}" class="px-4 py-2 rounded-xl text-sm font-semibold {% if categoria_ativa == cat.slug %}bg-blue-600 text-white{% else %}bg-white text-gray-600 border border-gray-200{% endif %}">{{ cat.nome }}</a>{% endfor %}
+    </div>
+    {% endif %}
+    {% if produtos %}
+    <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for produto in produtos %}
+      <a href="{% url 'loja:detalhe_produto' produto.slug %}" class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover group">
+        {% if produto.imagem_capa %}<img src="{{ produto.imagem_capa.url }}" alt="{{ produto.nome }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">{% else %}<div class="w-full h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center"><span class="text-blue-400 text-4xl">⚡</span></div>{% endif %}
+        {% if produto.destaque %}<span class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Destaque</span>{% endif %}
+        <div class="p-4">
+          <h3 class="font-bold text-gray-900 text-sm mb-2">{{ produto.nome }}</h3>
+          {% if produto.tem_desconto %}<div class="text-gray-400 text-xs line-through">R$ {{ produto.preco_original }}</div>{% endif %}
+          <div class="text-blue-600 font-black text-xl">R$ {{ produto.preco }}</div>
+          {% if produto.parcelas > 1 %}<div class="text-gray-400 text-xs">ou {{ produto.parcelas }}x s/ juros</div>{% endif %}
+          {% if not produto.em_estoque %}<div class="text-red-500 text-xs font-semibold mt-1">Indisponível</div>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-16 bg-white rounded-3xl border border-gray-100">
+      <div class="text-6xl mb-4">📦</div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Em breve</h2>
+      <p class="text-gray-500 mb-6">Estamos importando os primeiros produtos. Deixe seu contato para ser avisado!</p>
+      <a href="{% url 'contato:contato' %}" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold">Me avise quando chegar</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

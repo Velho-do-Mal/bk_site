@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Softwares de Engenharia Elétrica — BK Engenharia{% endblock %}
+{% block content %}
+<div class="bg-gray-950 pt-32 pb-16 text-center">
+  <h1 class="text-5xl font-black text-white"><span class="gradient-text">Softwares</span> BK</h1>
+  <p class="text-gray-400 text-xl mt-4">Ferramentas desenvolvidas por engenheiros, para engenheiros</p>
+</div>
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    {% if softwares %}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for sw in softwares %}
+      <a href="{% url 'loja:detalhe_software' sw.slug %}" class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm card-hover group">
+        {% if sw.imagem_capa %}<img src="{{ sw.imagem_capa.url }}" alt="{{ sw.nome }}" class="w-full h-48 object-cover">{% else %}<div class="w-full h-48 bg-gradient-to-br from-blue-900 to-blue-600 flex items-center justify-center"><span class="text-6xl">💻</span></div>{% endif %}
+        <div class="p-6">
+          <h3 class="font-black text-gray-900 text-xl mb-1 group-hover:text-blue-600 transition-colors">{{ sw.nome }}</h3>
+          <p class="text-gray-500 text-sm mb-4">{{ sw.tagline }}</p>
+          {% if sw.preco_mensal %}<div class="text-blue-600 font-black text-2xl">R$ {{ sw.preco_mensal }}<span class="text-sm font-normal text-gray-400">/mês</span></div>{% else %}<div class="text-blue-600 font-bold text-sm">Em breve</div>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-16 bg-white rounded-3xl border border-gray-100">
+      <div class="text-6xl mb-4">💻</div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Lançamento em breve</h2>
+      <p class="text-gray-500 mb-4">Estamos finalizando nossos softwares para engenharia elétrica. Junte-se à lista de espera!</p>
+      <a href="{% url 'contato:contato' %}" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold">Entrar na lista de espera</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

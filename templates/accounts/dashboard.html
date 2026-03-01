@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Minha Conta — BK Engenharia{% endblock %}
+{% block content %}
+<div class="bg-gray-950 pt-32 pb-8 text-center">
+  <h1 class="text-3xl font-black text-white">Olá, {{ user.first_name|default:user.username }}!</h1>
+  <p class="text-gray-400 mt-2">Área do Cliente — BK Engenharia</p>
+</div>
+<section class="py-12 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">Meus Pedidos</h2>
+    {% if pedidos %}
+    <div class="space-y-4">
+      {% for pedido in pedidos %}
+      <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="font-bold text-gray-900">Pedido #{{ pedido.numero }}</div>
+            <div class="text-gray-500 text-sm">{{ pedido.criado_em|date:"d/m/Y" }}</div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-gray-900">R$ {{ pedido.total }}</div>
+            <span class="text-xs px-2 py-1 rounded-full {% if pedido.status == 'pago' %}bg-green-100 text-green-700{% elif pedido.status == 'pendente' %}bg-yellow-100 text-yellow-700{% else %}bg-gray-100 text-gray-600{% endif %}">{{ pedido.get_status_display }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-12 bg-white rounded-2xl border border-gray-100">
+      <p class="text-gray-400">Você ainda não realizou nenhum pedido.</p>
+      <a href="{% url 'loja:produtos' %}" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-semibold">Ver Loja</a>
+    </div>
+    {% endif %}
+    <div class="mt-6">
+      <a href="{% url 'accounts:logout' %}" class="text-gray-500 text-sm hover:text-gray-700">Sair da conta →</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

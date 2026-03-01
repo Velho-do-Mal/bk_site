@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cliente/dashboard/
+Disallow: /rosetta/
+Sitemap: https://bk-engenharia.com/sitemap.xml

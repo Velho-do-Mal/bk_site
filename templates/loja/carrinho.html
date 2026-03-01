@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Carrinho — BK Engenharia{% endblock %}
+{% block content %}
+<div class="bg-gray-950 pt-32 pb-16 text-center">
+  <h1 class="text-4xl font-black text-white">Meu <span class="gradient-text">Carrinho</span></h1>
+</div>
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4">
+    {% if itens %}
+    <div class="space-y-4 mb-8">
+      {% for item in itens %}
+      <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex items-center gap-4">
+        <div class="flex-1">
+          <h3 class="font-bold text-gray-900">{{ item.nome }}</h3>
+          <p class="text-gray-500 text-sm">{{ item.quantidade }}x — R$ {{ item.preco }}</p>
+        </div>
+        <div class="font-black text-gray-900 text-lg">R$ {{ item.subtotal }}</div>
+        <a href="{% url 'loja:remover_carrinho' item.key %}" class="text-red-400 hover:text-red-600 text-sm">Remover</a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+      <div class="flex items-center justify-between mb-6">
+        <span class="font-bold text-gray-900 text-xl">Total</span>
+        <span class="font-black text-blue-600 text-3xl">R$ {{ total }}</span>
+      </div>
+      <a href="{% url 'loja:checkout' %}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl text-center transition-colors">Finalizar Compra</a>
+    </div>
+    {% else %}
+    <div class="text-center py-16 bg-white rounded-3xl border border-gray-100">
+      <div class="text-6xl mb-4">🛒</div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Carrinho vazio</h2>
+      <a href="{% url 'loja:produtos' %}" class="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold">Ver Produtos</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

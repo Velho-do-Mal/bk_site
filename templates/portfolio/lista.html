@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Portfólio de Projetos — Subestações e LTs — BK Engenharia{% endblock %}
+{% block content %}
+<div class="bg-gray-950 pt-32 pb-16 text-center">
+  <h1 class="text-5xl font-black text-white">Portfólio de <span class="gradient-text">Projetos</span></h1>
+  <p class="text-gray-400 text-xl mt-4">Subestações 13,8kV–230kV · Linhas de Transmissão · Estudos Elétricos</p>
+</div>
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    {% if categorias %}
+    <div class="flex flex-wrap gap-2 mb-10 justify-center">
+      <a href="{% url 'portfolio:lista' %}" class="px-4 py-2 rounded-xl text-sm font-semibold {% if not categoria_ativa %}bg-blue-600 text-white{% else %}bg-white text-gray-600 border border-gray-200{% endif %}">Todos</a>
+      {% for cat in categorias %}
+      <a href="?categoria={{ cat.slug }}" class="px-4 py-2 rounded-xl text-sm font-semibold {% if categoria_ativa == cat.slug %}bg-blue-600 text-white{% else %}bg-white text-gray-600 border border-gray-200{% endif %}">{{ cat.nome }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if projetos %}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for projeto in projetos %}
+      <a href="{% url 'portfolio:detalhe' projeto.slug %}" class="group relative rounded-2xl overflow-hidden card-hover bg-gray-100">
+        {% if projeto.imagem_capa %}
+        <img src="{{ projeto.imagem_capa.url }}" alt="{{ projeto.titulo }}" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+        {% else %}
+        <div class="w-full h-60 bg-gradient-to-br from-blue-900 to-blue-600"></div>
+        {% endif %}
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <h3 class="text-white font-bold">{{ projeto.titulo }}</h3>
+          {% if projeto.tensao %}<span class="text-blue-300 text-xs">{{ projeto.tensao }}</span>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="group relative rounded-2xl overflow-hidden card-hover">
+        <img src="/static/images/bk_imagem_1.jpg" alt="Subestação" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5"><h3 class="text-white font-bold">Subestações 13,8kV–230kV</h3></div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden card-hover">
+        <img src="/static/images/bk_imagem_2.jpg" alt="LT" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5"><h3 class="text-white font-bold">Linhas de Transmissão até 230kV</h3></div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden card-hover">
+        <img src="/static/images/bk_imagem_4.jpg" alt="Elétrica Industrial" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5"><h3 class="text-white font-bold">Instalações Industriais</h3></div>
+      </div>
+    </div>
+    <p class="text-center text-gray-400 mt-8">Projetos em cadastramento. Para ver nosso portfólio completo, entre em contato.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

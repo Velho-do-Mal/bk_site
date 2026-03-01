@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Serviços de Engenharia Elétrica — BK Engenharia{% endblock %}
+{% block meta_description %}Projetos elétricos, subestações até 230kV, linhas de transmissão, estudos elétricos, ETAP, PLS-CADD. Gerenciamento PMBOK. BK Engenharia, Curitiba PR.{% endblock %}
+{% block content %}
+<div class="bg-gray-950 pt-32 pb-16 text-center">
+  <div class="max-w-4xl mx-auto px-4">
+    <span class="text-blue-400 text-sm font-bold uppercase tracking-widest">Escopo Completo</span>
+    <h1 class="text-5xl font-black text-white mt-3">Nossos <span class="gradient-text">Serviços</span></h1>
+    <p class="text-gray-400 text-xl mt-4">Da concepção à entrega com excelência técnica.</p>
+  </div>
+</div>
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    {% for categoria in categorias %}
+    <div class="mb-16">
+      <h2 class="text-2xl font-black text-gray-900 mb-8 pb-3 border-b-2 border-blue-100">{{ categoria.nome }}</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for servico in categoria.servicos.all %}
+        {% if servico.ativo %}
+        <a href="{% url 'servicos:detalhe' servico.slug %}"
+           class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{{ servico.nome }}</h3>
+          <p class="text-gray-500 text-sm">{{ servico.descricao_curta }}</p>
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% empty %}
+    <!-- Dados estáticos enquanto não cadastrado no admin -->
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
+        <h3 class="font-bold text-gray-900 mb-2">Subestações até 230kV</h3>
+        <p class="text-gray-500 text-sm">Projetos completos de subestações de energia</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
+        <h3 class="font-bold text-gray-900 mb-2">Linhas de Transmissão</h3>
+        <p class="text-gray-500 text-sm">Projetos com PLS-CADD e levantamento topográfico</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
+        <h3 class="font-bold text-gray-900 mb-2">Estudos Elétricos</h3>
+        <p class="text-gray-500 text-sm">Fluxo de potência, curto-circuito, coordenação de isolamento</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
+        <h3 class="font-bold text-gray-900 mb-2">Projetos Prediais</h3>
+        <p class="text-gray-500 text-sm">Instalações elétricas residenciais e industriais</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
+        <h3 class="font-bold text-gray-900 mb-2">Redes de Distribuição MT/BT</h3>
+        <p class="text-gray-500 text-sm">Projetos de redes aéreas e subterrâneas</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
+        <h3 class="font-bold text-gray-900 mb-2">Gerenciamento PMBOK</h3>
+        <p class="text-gray-500 text-sm">Gestão completa com acompanhamento em tempo real</p>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="mt-16 bg-blue-600 rounded-3xl p-8 text-center text-white">
+      <h3 class="text-2xl font-black mb-3">Em todos os projetos estão inclusos</h3>
+      <p class="text-blue-100">Memórias de Cálculo, Estudos Técnicos e documentação conforme normas vigentes.</p>
+      <a href="{% url 'contato:contato' %}" class="inline-block mt-6 bg-white text-blue-600 font-bold px-8 py-3 rounded-xl hover:-translate-y-1 transition-transform">Solicitar Orçamento</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
