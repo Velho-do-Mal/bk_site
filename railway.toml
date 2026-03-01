@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn bk_engenharia.wsgi --log-file -"
+healthcheckPath = "/"
