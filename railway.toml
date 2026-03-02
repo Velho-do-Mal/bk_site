@@ -2,5 +2,6 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn bk_engenharia.wsgi --log-file -"
+startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn bk_engenharia.wsgi --bind 0.0.0.0:$PORT --workers 2 --log-file -"
 healthcheckPath = "/"
+healthcheckTimeout = 300
