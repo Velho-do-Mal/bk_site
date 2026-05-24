@@ -1,18 +1,33 @@
 {% extends 'base.html' %}
-{% block title %}Serviços de Engenharia Elétrica — BK Engenharia{% endblock %}
-{% block meta_description %}Projetos elétricos, subestações até 230kV, linhas de transmissão, estudos elétricos, ETAP, PLS-CADD. Gerenciamento PMBOK. BK Engenharia, Curitiba PR.{% endblock %}
+{% load static %}
+{% block title %}Serviços de Engenharia Elétrica — Subestações até 525kV, LTs, Estudos e Softwares | BK Engenharia{% endblock %}
+{% block meta_description %}Projetos elétricos de subestações 13,8kV a 525kV, linhas de transmissão com PLS-CADD, estudos elétricos (ETAP, IEEE 80, IEC 60255), gerenciamento PMBOK e softwares técnicos proprietários. BK Engenharia — Florianópolis, SC.{% endblock %}
+
 {% block content %}
-<div class="bg-gray-950 pt-32 pb-16 text-center">
-  <div class="max-w-4xl mx-auto px-4">
+
+<!-- HERO -->
+<div class="bg-gray-950 pt-32 pb-20 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <img src="/static/images/bk_imagem_2.jpg" alt="" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gray-950/90"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-4 text-center">
     <span class="text-blue-400 text-sm font-bold uppercase tracking-widest">Escopo Completo</span>
-    <h1 class="text-5xl font-black text-white mt-3">Nossos <span class="gradient-text">Serviços</span></h1>
-    <p class="text-gray-400 text-xl mt-4">Da concepção à entrega com excelência técnica.</p>
+    <h1 class="text-5xl lg:text-6xl font-black text-white mt-3 mb-6 leading-tight">
+      Do estudo à <span class="gradient-text">energização</span>
+    </h1>
+    <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+      Cobrimos todo o ciclo do projeto elétrico com a mesma equipe técnica — sem terceirizações que comprometem qualidade e prazo.
+    </p>
   </div>
 </div>
-<section class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4">
+
+<!-- SERVIÇOS DETALHADOS -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
     {% for categoria in categorias %}
-    <div class="mb-16">
+    <div class="mb-20">
       <h2 class="text-2xl font-black text-gray-900 mb-8 pb-3 border-b-2 border-blue-100">{{ categoria.nome }}</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for servico in categoria.servicos.all %}
@@ -27,45 +42,197 @@
       </div>
     </div>
     {% empty %}
-    <!-- Dados estáticos enquanto não cadastrado no admin -->
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
-        <h3 class="font-bold text-gray-900 mb-2">Subestações até 230kV</h3>
-        <p class="text-gray-500 text-sm">Projetos completos de subestações de energia</p>
+
+    <!-- ── BLOCO 1: PROJETOS ELÉTRICOS ── -->
+    <div class="mb-20">
+      <div class="flex items-center gap-4 mb-8 pb-4 border-b-2 border-blue-100">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h2 class="text-2xl font-black text-gray-900">Projetos Elétricos</h2>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
-        <h3 class="font-bold text-gray-900 mb-2">Linhas de Transmissão</h3>
-        <p class="text-gray-500 text-sm">Projetos com PLS-CADD e levantamento topográfico</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
-        <h3 class="font-bold text-gray-900 mb-2">Estudos Elétricos</h3>
-        <p class="text-gray-500 text-sm">Fluxo de potência, curto-circuito, coordenação de isolamento</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
-        <h3 class="font-bold text-gray-900 mb-2">Projetos Prediais</h3>
-        <p class="text-gray-500 text-sm">Instalações elétricas residenciais e industriais</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
-        <h3 class="font-bold text-gray-900 mb-2">Redes de Distribuição MT/BT</h3>
-        <p class="text-gray-500 text-sm">Projetos de redes aéreas e subterrâneas</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl mb-4"></div>
-        <h3 class="font-bold text-gray-900 mb-2">Gerenciamento PMBOK</h3>
-        <p class="text-gray-500 text-sm">Gestão completa com acompanhamento em tempo real</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <div class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full mb-3">13,8kV — 525kV</div>
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Subestações de Alta Tensão</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Projeto completo de subestações de 13,8kV a 525kV: arranjo físico, diagramas unifilares, proteção, aterramento (IEEE 80 / NBR 5419), SPDA, automação e memorial de cálculo conforme ABNT e ANEEL.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <div class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full mb-3">69kV — 230kV</div>
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Linhas de Transmissão</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Projetos de LTs de 69kV a 230kV com PLS-CADD: traçado, estruturas, fundações, aterramento, coordenação de isolamento, efeito corona e campos eletromagnéticos. Conformidade com NBR 5422 e ONS.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <div class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full mb-3">MT / BT</div>
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Redes de Distribuição</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Projetos de redes aéreas e subterrâneas de média e baixa tensão. Dimensionamento de cabos, proteção, seccionamento, religamento e conformidade com normas das concessionárias (Copel, Energisa, Neoenergia).</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <div class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full mb-3">Industrial / Predial</div>
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Projetos Industriais e Prediais</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Instalações elétricas industriais Classe A, prediais e comerciais. Dimensionamento de quadros, alimentadores, grupos geradores, UPS, iluminação e eficiência energética conforme NBR 5410 e NR-10.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <div class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full mb-3">IEEE 80 / NBR 5419</div>
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">SPDA e Aterramento</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Sistemas de proteção contra descargas atmosféricas e aterramento para subestações, linhas e instalações industriais. Memorial de cálculo automatizado com software BK proprietário — entrega em horas.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <div class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full mb-3">BIM / Revit</div>
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Projetos em Plataforma BIM</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Modelagem elétrica em Revit com integração multidisciplinar. Detecção de interferências, extração automática de quantitativos e compatibilização com projetos estruturais e civis. Conformidade com NBR ISO 19650.</p>
+        </div>
+
       </div>
     </div>
+
+    <!-- ── BLOCO 2: ESTUDOS ELÉTRICOS ── -->
+    <div class="mb-20">
+      <div class="flex items-center gap-4 mb-8 pb-4 border-b-2 border-blue-100">
+        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h2 class="text-2xl font-black text-gray-900">Estudos Elétricos</h2>
+        <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Diferencial exclusivo</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Fluxo de Potência</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Análise de regime permanente com ETAP e software BK proprietário. Carregamento de transformadores, quedas de tensão, perdas e conformidade com critérios ANEEL e ONS.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Curto-Circuito</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Cálculo de correntes de curto-circuito trifásico, bifásico e monofásico para dimensionamento de equipamentos e ajuste de proteções. Conforme IEC 60909 e ANSI/IEEE C37.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Proteção e Coordenação</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Estudo de coordenação e seletividade de proteções. Ajuste de relés de sobrecorrente, distância e diferencial conforme IEC 60255 e ANSI. Curvas tempo-corrente e relatório de parametrização.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Coordenação de Isolamento</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Seleção de para-raios, nível básico de isolamento (BIL) e coordenação de isolamento para subestações e linhas de transmissão. Conforme IEC 60071 e NBR 15751.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Efeito Corona e EMC</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Cálculo de efeito corona, campo elétrico e magnético para linhas de transmissão. Avaliação de interferência eletromagnética (EMC) e conformidade com limites ANEEL e ICNIRP.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Religamento e Transitórios</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Estudos de religamento tripolar e monopolar, transitórios de manobra e energização de transformadores. Análise de sobretensões temporárias (TOV) e transitórias (TRV).</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── BLOCO 3: GESTÃO E EXECUÇÃO ── -->
+    <div class="mb-20">
+      <div class="flex items-center gap-4 mb-8 pb-4 border-b-2 border-blue-100">
+        <div class="w-10 h-10 bg-gray-900 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
+        <h2 class="text-2xl font-black text-gray-900">Gestão e Execução</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Gerenciamento PMBOK</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Gestão completa de projetos com metodologia PMBOK e MS Project. Cronograma, EAP, controle de custos, gestão de riscos e relatórios executivos em Power BI — com ERP próprio integrado.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Fiscalização de Obras</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Acompanhamento técnico de obras elétricas com registro fotográfico, relatórios de conformidade, controle de qualidade e interface com concessionárias e órgãos reguladores.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Comissionamento e SPCS</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Testes de comissionamento de subestações, relés de proteção e sistemas de controle (SPCS). Verificação de sequência de operação, testes de injeção de corrente e energização supervisionada.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Consultoria Especializada</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Revisão técnica de projetos, laudos periciais, pareceres técnicos e consultoria para concessionárias, indústrias e construtoras. Experiência em processos de aprovação junto à ANEEL e ONS.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Automação e SCADA</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Projetos de automação de subestações, sistemas SCADA e teleproteção. Especificação de RTUs, IEDs, protocolos DNP3 e IEC 61850. Integração com centros de controle.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover group">
+          <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Energia Eólica e Solar</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Projetos elétricos para parques eólicos e usinas fotovoltaicas. Subestações de conexão, estudos de impacto na rede, conformidade com Módulo 3 dos Procedimentos de Rede do ONS.</p>
+        </div>
+
+      </div>
+    </div>
+
     {% endfor %}
-    <div class="mt-16 bg-blue-600 rounded-3xl p-8 text-center text-white">
-      <h3 class="text-2xl font-black mb-3">Em todos os projetos estão inclusos</h3>
-      <p class="text-blue-100">Memórias de Cálculo, Estudos Técnicos e documentação conforme normas vigentes.</p>
-      <a href="{% url 'contato:contato' %}" class="inline-block mt-6 bg-white text-blue-600 font-bold px-8 py-3 rounded-xl hover:-translate-y-1 transition-transform">Solicitar Orçamento</a>
+
+    <!-- GARANTIA DE QUALIDADE -->
+    <div class="bg-gray-950 rounded-3xl p-10 text-white">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="text-blue-400 text-sm font-bold uppercase tracking-widest">Padrão BK</span>
+          <h3 class="text-3xl font-black mt-2 mb-4">Em todo projeto, você recebe:</h3>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Memorial de Cálculo completo conforme normas ABNT, IEEE e IEC</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Pranchas em AutoCAD e/ou Revit com ART/RRT do CREA</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Relatórios técnicos gerados automaticamente por software proprietário</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Cronograma com MS Project e acompanhamento via ERP próprio</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Suporte técnico durante aprovação junto à concessionária ou ANEEL</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-6xl font-black text-blue-400 mb-2">100%</div>
+          <div class="text-white font-bold text-lg">dos projetos entregues</div>
+          <div class="text-gray-400 text-sm mt-1">dentro do prazo e com documentação completa</div>
+          <a href="{% url 'contato:contato' %}"
+             class="inline-block mt-6 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl transition-all hover:-translate-y-1">
+            Solicitar Orçamento
+          </a>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
+
 {% endblock %}

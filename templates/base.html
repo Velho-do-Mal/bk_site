@@ -283,9 +283,9 @@
             </div>
           </div>
           <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
-            Engenharia elétrica de alta performance. Projetos de subestações até 230kV,
-            linhas de transmissão, estudos elétricos e tecnologia BIM para resultados
-            extraordinários.
+            25 anos de experiência em sistemas elétricos de potência. Subestações de 13,8kV a 525kV,
+            linhas de transmissão, estudos elétricos e softwares técnicos proprietários.
+            Projetos para Copel, ISA CTEEP, Neoenergia, Eletrosul e Energisa.
           </p>
           <div class="flex gap-3">
             <a href="{{ SITE_LINKEDIN }}" target="_blank"
@@ -308,7 +308,7 @@
           <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Serviços</h3>
           <ul class="space-y-2 text-sm">
             <li><a href="{% url 'servicos:lista' %}" class="hover:text-blue-400 transition-colors">Projetos Elétricos</a></li>
-            <li><a href="{% url 'servicos:lista' %}" class="hover:text-blue-400 transition-colors">Subestações até 230kV</a></li>
+            <li><a href="{% url 'servicos:lista' %}" class="hover:text-blue-400 transition-colors">Subestações até 525kV</a></li>
             <li><a href="{% url 'servicos:lista' %}" class="hover:text-blue-400 transition-colors">Linhas de Transmissão</a></li>
             <li><a href="{% url 'servicos:lista' %}" class="hover:text-blue-400 transition-colors">Estudos Elétricos</a></li>
             <li><a href="{% url 'servicos:lista' %}" class="hover:text-blue-400 transition-colors">Gerenciamento PMBOK</a></li>
@@ -344,8 +344,8 @@
       </div>
 
       <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-gray-500 text-sm">
-          © {{ now.year|default:"2025" }} BK Engenharia e Tecnologia. Todos os direitos reservados.
+          <p class="text-gray-500 text-sm">
+          © {% now "Y" %} BK Engenharia e Tecnologia. Todos os direitos reservados. CREA PR-32397/D
         </p>
         <div class="flex gap-4 text-sm text-gray-500">
           <a href="#" class="hover:text-gray-300">Política de Privacidade</a>

@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Contato e Orçamento — BK Engenharia e Tecnologia{% endblock %}
-{% block meta_description %}Entre em contato com a BK Engenharia. Solicite orçamento para projetos elétricos, subestações, linhas de transmissão. WhatsApp: (41) 99527-5570{% endblock %}
+{% block title %}Contato e Orçamento — Fale com Márcio Knopp | BK Engenharia{% endblock %}
+{% block meta_description %}Solicite orçamento diretamente com Márcio Knopp, engenheiro eletricista sênior com 25 anos de experiência. Subestações até 525kV, linhas de transmissão, estudos elétricos. Resposta em até 24h.{% endblock %}
 
 {% block content %}
 <!-- Header -->
 <div class="bg-gray-950 pt-32 pb-16">
   <div class="max-w-7xl mx-auto px-4 text-center">
     <span class="text-blue-400 text-sm font-bold uppercase tracking-widest">Fale Conosco</span>
-    <h1 class="text-5xl font-black text-white mt-3 mb-4">Solicitar <span class="gradient-text">Orçamento</span></h1>
+    <h1 class="text-5xl font-black text-white mt-3 mb-4">Fale com <span class="gradient-text">Márcio</span></h1>
     <p class="text-gray-400 text-xl max-w-2xl mx-auto">
-      Resposta em até 24 horas. Ou se preferir, fale direto pelo WhatsApp.
+      Sem intermediários. Sem propostas genéricas. Resposta técnica real em até 24 horas.
     </p>
+    <div class="flex flex-wrap justify-center gap-3 mt-6">
+      <span class="bg-white/10 border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">25+ anos de experiência</span>
+      <span class="bg-white/10 border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">CREA PR-32397/D</span>
+      <span class="bg-white/10 border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Projetos em todo o Brasil</span>
+    </div>
   </div>
 </div>
 
@@ -51,7 +56,7 @@
             </svg>
           </div>
           <h3 class="font-bold text-gray-900 mb-1">Localização</h3>
-          <p class="text-gray-600 text-sm">Curitiba — Paraná, Brasil</p>
+          <p class="text-gray-600 text-sm">Florianópolis — Santa Catarina, Brasil</p>
           <p class="text-gray-400 text-xs mt-1">Atendemos projetos em todo o Brasil</p>
         </div>
 
@@ -65,7 +70,8 @@
 
       <!-- Formulário -->
       <div class="lg:col-span-2 bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Enviar mensagem</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Enviar mensagem</h2>
+        <p class="text-gray-500 text-sm mb-6">Márcio responde pessoalmente. Descreva seu projeto com o máximo de detalhes para uma análise técnica precisa.</p>
         <form method="POST" class="space-y-5">
           {% csrf_token %}
           <div class="grid sm:grid-cols-2 gap-5">

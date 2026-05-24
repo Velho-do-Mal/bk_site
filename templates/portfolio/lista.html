@@ -1,57 +1,215 @@
 {% extends 'base.html' %}
-{% block title %}Portfólio de Projetos — Subestações e LTs — BK Engenharia{% endblock %}
+{% load static %}
+{% block title %}Portfólio — Subestações 525kV, Parques Eólicos e Estudos Elétricos | BK Engenharia{% endblock %}
+{% block meta_description %}Portfólio real da BK Engenharia: SE Taubaté 525kV (ISA CTEEP), SE Fernão Dias 525kV (Neoenergia), Parque Eólico Curral Novo (98 aerogeradores), redes subterrâneas Copel e estudos Energisa. Projetos entregues com excelência.{% endblock %}
+
 {% block content %}
-<div class="bg-gray-950 pt-32 pb-16 text-center">
-  <h1 class="text-5xl font-black text-white">Portfólio de <span class="gradient-text">Projetos</span></h1>
-  <p class="text-gray-400 text-xl mt-4">Subestações 13,8kV–230kV · Linhas de Transmissão · Estudos Elétricos</p>
+
+<!-- HERO -->
+<div class="bg-gray-950 pt-32 pb-20 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-15">
+    <img src="/static/images/bk_imagem_4.jpg" alt="" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gray-950/80"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-4 text-center">
+    <span class="text-blue-400 text-sm font-bold uppercase tracking-widest">Projetos Reais</span>
+    <h1 class="text-5xl lg:text-6xl font-black text-white mt-3 mb-6 leading-tight">
+      Obras que <span class="gradient-text">marcaram o setor</span>
+    </h1>
+    <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+      Cada projeto aqui foi coordenado pessoalmente por Márcio Knopp — do estudo inicial à energização final.
+    </p>
+
+    <!-- Stats rápidas -->
+    <div class="flex flex-wrap justify-center gap-8 mt-10">
+      <div class="text-center">
+        <div class="text-3xl font-black text-white">50+</div>
+        <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">Projetos Entregues</div>
+      </div>
+      <div class="w-px bg-gray-700 hidden sm:block"></div>
+      <div class="text-center">
+        <div class="text-3xl font-black text-white">525<span class="text-blue-400 text-xl">kV</span></div>
+        <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">Tensão Máxima</div>
+      </div>
+      <div class="w-px bg-gray-700 hidden sm:block"></div>
+      <div class="text-center">
+        <div class="text-3xl font-black text-white">122+</div>
+        <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">Aerogeradores</div>
+      </div>
+      <div class="w-px bg-gray-700 hidden sm:block"></div>
+      <div class="text-center">
+        <div class="text-3xl font-black text-white">6+</div>
+        <div class="text-gray-400 text-xs uppercase tracking-wider mt-1">Concessionárias</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- FILTROS E GRID -->
 <section class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
     {% if categorias %}
     <div class="flex flex-wrap gap-2 mb-10 justify-center">
-      <a href="{% url 'portfolio:lista' %}" class="px-4 py-2 rounded-xl text-sm font-semibold {% if not categoria_ativa %}bg-blue-600 text-white{% else %}bg-white text-gray-600 border border-gray-200{% endif %}">Todos</a>
+      <a href="{% url 'portfolio:lista' %}"
+         class="px-5 py-2 rounded-xl text-sm font-semibold transition-all {% if not categoria_ativa %}bg-blue-600 text-white shadow-lg shadow-blue-600/25{% else %}bg-white text-gray-600 border border-gray-200 hover:border-blue-300{% endif %}">
+        Todos
+      </a>
       {% for cat in categorias %}
-      <a href="?categoria={{ cat.slug }}" class="px-4 py-2 rounded-xl text-sm font-semibold {% if categoria_ativa == cat.slug %}bg-blue-600 text-white{% else %}bg-white text-gray-600 border border-gray-200{% endif %}">{{ cat.nome }}</a>
+      <a href="?categoria={{ cat.slug }}"
+         class="px-5 py-2 rounded-xl text-sm font-semibold transition-all {% if categoria_ativa == cat.slug %}bg-blue-600 text-white shadow-lg shadow-blue-600/25{% else %}bg-white text-gray-600 border border-gray-200 hover:border-blue-300{% endif %}">
+        {{ cat.nome }}
+      </a>
       {% endfor %}
     </div>
     {% endif %}
+
     {% if projetos %}
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for projeto in projetos %}
-      <a href="{% url 'portfolio:detalhe' projeto.slug %}" class="group relative rounded-2xl overflow-hidden card-hover bg-gray-100">
+      <a href="{% url 'portfolio:detalhe' projeto.slug %}"
+         class="group relative rounded-2xl overflow-hidden card-hover bg-gray-200" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:0 }}00">
         {% if projeto.imagem_capa %}
-        <img src="{{ projeto.imagem_capa.url }}" alt="{{ projeto.titulo }}" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+        <img src="{{ projeto.imagem_capa.url }}" alt="{{ projeto.titulo }}"
+             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
         {% else %}
-        <div class="w-full h-60 bg-gradient-to-br from-blue-900 to-blue-600"></div>
+        <div class="w-full h-64 bg-gradient-to-br from-blue-900 to-blue-600 flex items-center justify-center">
+          <svg class="w-16 h-16 text-blue-200 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
         {% endif %}
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5">
-          <h3 class="text-white font-bold">{{ projeto.titulo }}</h3>
-          {% if projeto.tensao %}<span class="text-blue-300 text-xs">{{ projeto.tensao }}</span>{% endif %}
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent
+                    opacity-70 group-hover:opacity-90 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          {% if projeto.categoria %}
+          <span class="text-blue-300 text-xs font-semibold uppercase tracking-wider">{{ projeto.categoria.nome }}</span>
+          {% endif %}
+          <h3 class="text-white font-bold text-lg mt-1 group-hover:text-blue-200 transition-colors">{{ projeto.titulo }}</h3>
+          {% if projeto.cliente %}<p class="text-gray-400 text-sm mt-1">{{ projeto.cliente }}</p>{% endif %}
+          <div class="flex items-center gap-2 mt-2">
+            {% if projeto.tensao %}
+            <span class="bg-blue-600/80 text-white text-xs px-2 py-0.5 rounded-full">{{ projeto.tensao }}</span>
+            {% endif %}
+            {% if projeto.ano %}
+            <span class="bg-white/10 text-gray-300 text-xs px-2 py-0.5 rounded-full">{{ projeto.ano }}</span>
+            {% endif %}
+          </div>
+        </div>
+        <!-- Hover overlay -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <div class="bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-xl">Ver detalhes →</div>
         </div>
       </a>
       {% endfor %}
     </div>
+
     {% else %}
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="group relative rounded-2xl overflow-hidden card-hover">
-        <img src="/static/images/bk_imagem_1.jpg" alt="Subestação" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5"><h3 class="text-white font-bold">Subestações 13,8kV–230kV</h3></div>
+    <!-- Projetos reais hardcoded enquanto não há cadastro -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up">
+        <img src="/static/images/bk_imagem_1.jpg" alt="SE Taubaté 525kV" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold uppercase tracking-wider">Subestação · Extra Alta Tensão</span>
+          <h3 class="text-white font-bold text-lg mt-1">SE Taubaté 525 kV</h3>
+          <p class="text-gray-400 text-sm mt-1">Copel / ISA CTEEP — São Paulo</p>
+          <div class="flex gap-2 mt-2">
+            <span class="bg-blue-600/80 text-white text-xs px-2 py-0.5 rounded-full">525kV</span>
+          </div>
+        </div>
       </div>
-      <div class="group relative rounded-2xl overflow-hidden card-hover">
-        <img src="/static/images/bk_imagem_2.jpg" alt="LT" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5"><h3 class="text-white font-bold">Linhas de Transmissão até 230kV</h3></div>
+
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+        <img src="/static/images/bk_imagem_2.jpg" alt="SE Fernão Dias 525kV" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold uppercase tracking-wider">Subestação · Extra Alta Tensão</span>
+          <h3 class="text-white font-bold text-lg mt-1">SE Fernão Dias 525 kV</h3>
+          <p class="text-gray-400 text-sm mt-1">Neoenergia — MG/SP</p>
+          <div class="flex gap-2 mt-2">
+            <span class="bg-blue-600/80 text-white text-xs px-2 py-0.5 rounded-full">525kV</span>
+          </div>
+        </div>
       </div>
-      <div class="group relative rounded-2xl overflow-hidden card-hover">
-        <img src="/static/images/bk_imagem_4.jpg" alt="Elétrica Industrial" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5"><h3 class="text-white font-bold">Instalações Industriais</h3></div>
+
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+        <img src="/static/images/bk_imagem_3.jpg" alt="SE Curitiba Leste" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold uppercase tracking-wider">Subestação</span>
+          <h3 class="text-white font-bold text-lg mt-1">SE Curitiba Leste</h3>
+          <p class="text-gray-400 text-sm mt-1">Eletrosul — Paraná</p>
+          <div class="flex gap-2 mt-2">
+            <span class="bg-blue-600/80 text-white text-xs px-2 py-0.5 rounded-full">230kV</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+        <img src="/static/images/bk_imagem_4.jpg" alt="Parque Eólico Curral Novo" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-green-300 text-xs font-semibold uppercase tracking-wider">Energia Eólica</span>
+          <h3 class="text-white font-bold text-lg mt-1">Parque Eólico Curral Novo</h3>
+          <p class="text-gray-400 text-sm mt-1">98 aerogeradores — gestão integral</p>
+          <div class="flex gap-2 mt-2">
+            <span class="bg-green-600/80 text-white text-xs px-2 py-0.5 rounded-full">Eólica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="400">
+        <img src="/static/images/bk_imagem_5.jpg" alt="Parques Eólicos Casa Nova" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-green-300 text-xs font-semibold uppercase tracking-wider">Energia Eólica</span>
+          <h3 class="text-white font-bold text-lg mt-1">Parques Eólicos Casa Nova I e II</h3>
+          <p class="text-gray-400 text-sm mt-1">24 aerogeradores cada — NE Brasil</p>
+          <div class="flex gap-2 mt-2">
+            <span class="bg-green-600/80 text-white text-xs px-2 py-0.5 rounded-full">Eólica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="500">
+        <img src="/static/images/bk_imagem_6.jpg" alt="Redes Subterrâneas Copel" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="text-blue-300 text-xs font-semibold uppercase tracking-wider">Redes Subterrâneas</span>
+          <h3 class="text-white font-bold text-lg mt-1">Redes Subterrâneas 34,5 kV</h3>
+          <p class="text-gray-400 text-sm mt-1">Copel — Litoral do Paraná</p>
+          <div class="flex gap-2 mt-2">
+            <span class="bg-blue-600/80 text-white text-xs px-2 py-0.5 rounded-full">34,5kV</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    {% endif %}
+
+    <!-- CTA de contato -->
+    <div class="mt-16 bg-blue-600 rounded-3xl p-10 text-center text-white">
+      <h3 class="text-2xl font-black mb-3">Quer ver mais detalhes de algum projeto?</h3>
+      <p class="text-blue-100 mb-6 max-w-xl mx-auto">Entre em contato diretamente com Márcio. Ele pode apresentar o portfólio completo, incluindo memoriais de cálculo e documentação técnica dos projetos.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="{% url 'contato:contato' %}"
+           class="bg-white text-blue-700 hover:bg-blue-50 font-bold px-8 py-4 rounded-2xl transition-all hover:-translate-y-1">
+          Solicitar Portfólio Completo
+        </a>
+        <a href="https://wa.me/5548988773776"
+           class="bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all hover:-translate-y-1">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.89a11.822 11.822 0 001.58 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.447h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
       </div>
     </div>
-    <p class="text-center text-gray-400 mt-8">Projetos em cadastramento. Para ver nosso portfólio completo, entre em contato.</p>
-    {% endif %}
+
   </div>
 </section>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true, offset: 80 });</script>
+
 {% endblock %}
