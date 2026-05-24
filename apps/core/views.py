@@ -5,6 +5,13 @@ from apps.blog.models import Artigo
 from apps.portfolio.models import Projeto
 
 
+TOOLS = [
+    'AutoCAD', 'Revit (BIM)', 'PLS-CADD', 'ETAP', 'Python',
+    'Streamlit', 'PostgreSQL', 'Power BI', 'MS Project', 'PTW',
+    'SEL', 'MATLAB', 'GIS', 'Eplan', 'SCADA', 'SPCS',
+]
+
+
 def home(request):
     numeros = Numero.objects.filter(ativo=True)
     depoimentos = Depoimento.objects.filter(ativo=True)
@@ -18,7 +25,8 @@ def home(request):
         'parceiros': parceiros,
         'projetos_destaque': projetos_destaque,
         'artigos_recentes': artigos_recentes,
-        'tools_list': ['AutoCAD', 'Revit', 'PLS-CADD', 'ETAP', 'Python', 'PTW', 'SEL', 'BIM'],
+        'tools_list': TOOLS,
+        'tools_fallback': TOOLS,
     })
 
 

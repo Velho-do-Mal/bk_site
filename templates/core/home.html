@@ -641,7 +641,7 @@
         {{ tool }}
       </div>
       {% empty %}
-      {% for tool in "AutoCAD,Revit (BIM),PLS-CADD,ETAP,Python,Streamlit,PostgreSQL,Power BI,MS Project,PTW,SEL,MATLAB,GIS,Eplan,SCADA,SPCS"|split:"," %}
+      {% for tool in tools_fallback %}
       <div class="bg-gray-800 border border-gray-700 hover:border-blue-500 text-gray-300 hover:text-white
                   px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:-translate-y-1">
         {{ tool }}
